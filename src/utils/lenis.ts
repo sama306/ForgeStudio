@@ -24,3 +24,7 @@ export function initLenis(): void {
 
   requestAnimationFrame(raf);
 }
+
+export function getLenis(): Lenis | null {
+  return lenis;
+}

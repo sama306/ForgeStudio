@@ -1,0 +1,144 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Discover',
+    description:
+      'We immerse ourselves in your market, audience, and goals to uncover the insights that will shape the project.',
+  },
+  {
+    number: '02',
+    title: 'Research',
+    description:
+      'Competitive analysis, user research, and data synthesis to validate assumptions and define the strategy.',
+  },
+  {
+    number: '03',
+    title: 'Design',
+    description:
+      'From wireframes to high-fidelity prototypes, we iterate on every interaction until it feels intuitive and polished.',
+  },
+  {
+    number: '04',
+    title: 'Develop',
+    description:
+      'We bring the design to life with clean, performant code — building, testing, and refining until it ships.',
+  },
+  {
+    number: '05',
+    title: 'Launch',
+    description:
+      'Deployment, QA, and performance optimization. We don\'t just launch — we ensure everything runs flawlessly.',
+  },
+];
+---
+
+<section class="process-section bg-bg px-6 py-24" aria-label="Our process">
+  <div class="mx-auto max-w-5xl">
+    <h2 class="font-heading font-bold leading-none text-text" style="font-size: var(--text-h1)">
+      Our Process
+    </h2>
+    <p class="mt-4 max-w-xl font-sans text-muted" style="font-size: var(--text-body);">
+      A proven methodology that takes every project from discovery to launch with clarity and precision.
+    </p>
+
+    <div class="relative mt-20">
+      <div class="absolute left-6 top-0 h-full w-px overflow-hidden max-sm:left-4 md:left-1/2 md:-translate-x-px">
+        <div class="timeline-track h-full w-full bg-muted/15" />
+        <div class="timeline-progress absolute top-0 left-0 h-0 w-full bg-accent" />
+      </div>
+
+      {steps.map((step, i) => {
+        const isLeft = i % 2 === 0;
+        return (
+          <div
+            class="step-row relative flex flex-col pb-20 last:pb-0"
+            class:list={{ 'md:flex-row': isLeft, 'md:flex-row-reverse': !isLeft }}
+          >
+            <div class="flex flex-1 items-start max-md:pl-14 max-sm:pl-10 md:px-10">
+              <div class="w-full max-w-md">
+                <span
+                  class="font-heading text-sm font-semibold tracking-widest text-accent"
+                >
+                  {step.number}
+                </span>
+                <h3 class="mt-2 font-heading text-2xl font-semibold text-text">
+                  {step.title}
+                </h3>
+                <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+
+            <div class="absolute left-6 flex items-start max-sm:left-4 md:left-1/2 md:-translate-x-1/2">
+              <div class="step-dot relative z-10 mt-1 flex size-5 items-center justify-center max-sm:size-4">
+                <div class="step-dot-ring size-5 rounded-full border-2 border-muted/30 bg-bg transition-colors duration-500 max-sm:size-4" />
+                <div class="step-dot-fill absolute inset-0 scale-0 rounded-full bg-accent transition-transform duration-500" />
+              </div>
+            </div>
+
+            <div class="flex-1 max-md:hidden" />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getLenis } from '../../utils/lenis';
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReduced) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+
+  gsap.ticker.lagSmoothing(0);
+
+  const section = document.querySelector('.process-section');
+  const progress = section?.querySelector('.timeline-progress');
+  const dots = section?.querySelectorAll('.step-dot-ring');
+  const fills = section?.querySelectorAll('.step-dot-fill');
+  const numSteps = fills?.length ?? 1;
+
+  if (section && progress) {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top center',
+        end: 'bottom center',
+        scrub: 1,
+        onUpdate: (self) => {
+          const p = self.progress;
+          fills?.forEach((fill, i) => {
+            const threshold = (i + 1) / numSteps;
+            if (p >= threshold) {
+              fill.classList.add('scale-100');
+              dots?.[i]?.classList.remove('border-muted/30');
+              dots?.[i]?.classList.add('border-accent');
+            } else {
+              fill.classList.remove('scale-100');
+              dots?.[i]?.classList.remove('border-accent');
+              dots?.[i]?.classList.add('border-muted/30');
+            }
+          });
+        },
+      },
+    });
+
+    tl.to(progress, {
+      height: '100%',
+      duration: 1,
+      ease: 'none',
+    });
+  }
+}
+</script>
