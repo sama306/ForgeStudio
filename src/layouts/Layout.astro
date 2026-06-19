@@ -1,3 +1,14 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = 'Forge Studio', description = 'Designing Digital Experiences That Convert.' } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,14 +17,17 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<slot name="header" />
+		<slot name="main" />
+		<slot name="footer" />
 	</body>
 </html>
 
-<style>
+<style is:global>
 	html,
 	body {
 		margin: 0;
