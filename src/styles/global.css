@@ -37,3 +37,19 @@
   --color-muted: #6B6B6B;
   --color-accent: #FF6B00;
 }
+
+/* Theme transition — crossfade suave */
+@media (prefers-reduced-motion: no-preference) {
+  :root,
+  :root::before,
+  :root::after,
+  :root *,
+  :root *::before,
+  :root *::after {
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease,
+      border-color 0.35s ease,
+      outline-color 0.35s ease;
+  }
+}
