@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta principal */
+  --color-bg: #0B0B0B;
+  --color-surface: #121212;
+  --color-text: #FFFFFF;
+  --color-muted: #A0A0A0;
+
+  /* Acento */
+  --color-accent: #FF6B00;
+
+  /* Tipografía — familias */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Clash Display", "Space Grotesk", system-ui, sans-serif;
+}
+
+:root {
+  --color-bg: #0B0B0B;
+  --color-surface: #121212;
+  --color-text: #FFFFFF;
+  --color-muted: #A0A0A0;
+  --color-accent: #FF6B00;
+
+  --text-hero: clamp(2.5rem, 8vw, 7rem);
+  --text-h1: clamp(2rem, 5vw, 4rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.5rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+}
