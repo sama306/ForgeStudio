@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Navbar } from '../components/Navbar';
 
 export interface Props {
 	title?: string;
@@ -19,8 +20,18 @@ const { title = 'Forge Studio', description = 'Designing Digital Experiences Tha
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+		<script is:inline>
+(function() {
+  var stored = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'light' || (!stored && !prefersDark)) {
+    document.documentElement.classList.add('light');
+  }
+})();
+</script>
 	</head>
 	<body>
+		<Navbar />
 		<slot name="header" />
 		<slot name="main" />
 		<slot name="footer" />

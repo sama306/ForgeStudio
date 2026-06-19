@@ -29,3 +29,11 @@
   --text-body: 1rem;
   --text-small: 0.875rem;
 }
+
+:root.light {
+  --color-bg: #FFFFFF;
+  --color-surface: #F5F5F5;
+  --color-text: #0B0B0B;
+  --color-muted: #6B6B6B;
+  --color-accent: #FF6B00;
+}
