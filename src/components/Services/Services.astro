@@ -44,7 +44,7 @@ const services = [
 
     <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {services.map((service) => (
-        <article class="group rounded-2xl border border-muted/10 bg-surface p-8">
+        <article class="service-card rounded-2xl border border-muted/10 bg-surface p-8">
           <div class="text-accent" role="img" aria-label={service.title}>
             {
               service.icon === 'web' &&
@@ -108,3 +108,55 @@ const services = [
     </div>
   </div>
 </section>
+
+<style>
+  .service-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.1s ease;
+    will-change: transform;
+  }
+
+  .service-card:hover {
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 107, 0, 0.06);
+    transform: translateY(-6px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card {
+      transition: none;
+    }
+
+    .service-card:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+if (!isTouch) {
+  document.querySelectorAll('.service-card').forEach((card) => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      card.style.transform =
+        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.removeProperty('transform');
+    });
+  });
+}
+</script>

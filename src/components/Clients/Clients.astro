@@ -33,101 +33,53 @@ const clients = [
 ];
 ---
 
-<section class="overflow-hidden bg-bg py-16" aria-label="Client logos">
+<section class="overflow-hidden bg-bg px-10 py-16" aria-label="Client logos">
   <div class="clients-track flex w-max">
-    <div class="flex items-center gap-20 px-10">
-      {clients.map((client) => (
-        <div class="flex items-center gap-4">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="shrink-0 text-muted/40"
-            aria-hidden="true"
-          >
-            {client.shape === 'circle' && (
-              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'square' && (
-              <rect x="6" y="6" width="28" height="28" rx="4" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'diamond' && (
-              <path d="M20 4L36 20L20 36L4 20Z" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'hexagon' && (
-              <path
-                d="M20 4L32 12V28L20 36L8 28V12Z"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-            )}
-            {client.shape === 'triangle' && (
-              <path d="M20 6L34 32H6Z" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'star' && (
-              <path
-                d="M20 4L23.5 14.5L34.5 14.5L25.5 21L28.5 32L20 25L11.5 32L14.5 21L5.5 14.5L16.5 14.5Z"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
-            )}
-          </svg>
-          <span class="font-heading text-lg font-medium tracking-wide text-muted/60">
-            {client.name}
-          </span>
-        </div>
-      ))}
-    </div>
-    <div class="flex items-center gap-20 px-10">
-      {clients.map((client) => (
-        <div class="flex items-center gap-4">
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="shrink-0 text-muted/40"
-            aria-hidden="true"
-          >
-            {client.shape === 'circle' && (
-              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'square' && (
-              <rect x="6" y="6" width="28" height="28" rx="4" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'diamond' && (
-              <path d="M20 4L36 20L20 36L4 20Z" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'hexagon' && (
-              <path
-                d="M20 4L32 12V28L20 36L8 28V12Z"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-            )}
-            {client.shape === 'triangle' && (
-              <path d="M20 6L34 32H6Z" stroke="currentColor" stroke-width="1.5" />
-            )}
-            {client.shape === 'star' && (
-              <path
-                d="M20 4L23.5 14.5L34.5 14.5L25.5 21L28.5 32L20 25L11.5 32L14.5 21L5.5 14.5L16.5 14.5Z"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
-            )}
-          </svg>
-          <span class="font-heading text-lg font-medium tracking-wide text-muted/60">
-            {client.name}
-          </span>
-        </div>
-      ))}
-    </div>
+    {[...clients, ...clients].map((client) => (
+      <div class="flex shrink-0 items-center gap-4 mr-20">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="shrink-0 text-muted/40"
+          aria-hidden="true"
+        >
+          {client.shape === 'circle' && (
+            <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5" />
+          )}
+          {client.shape === 'square' && (
+            <rect x="6" y="6" width="28" height="28" rx="4" stroke="currentColor" stroke-width="1.5" />
+          )}
+          {client.shape === 'diamond' && (
+            <path d="M20 4L36 20L20 36L4 20Z" stroke="currentColor" stroke-width="1.5" />
+          )}
+          {client.shape === 'hexagon' && (
+            <path
+              d="M20 4L32 12V28L20 36L8 28V12Z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          )}
+          {client.shape === 'triangle' && (
+            <path d="M20 6L34 32H6Z" stroke="currentColor" stroke-width="1.5" />
+          )}
+          {client.shape === 'star' && (
+            <path
+              d="M20 4L23.5 14.5L34.5 14.5L25.5 21L28.5 32L20 25L11.5 32L14.5 21L5.5 14.5L16.5 14.5Z"
+              stroke="currentColor"
+              stroke-width="1.2"
+            />
+          )}
+        </svg>
+        <span class="font-heading text-lg font-medium tracking-wide text-muted/60">
+          {client.name}
+        </span>
+      </div>
+    ))}
   </div>
 </section>
-
 <style>
   .clients-track {
     animation: clients-scroll 40s linear infinite;
