@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { Navbar } from '../components/Navbar';
+import { Footer } from '../components/Footer';
 
 export interface Props {
 	title?: string;
@@ -34,7 +35,9 @@ const { title = 'Forge Studio', description = 'Designing Digital Experiences Tha
 		<Navbar />
 		<slot name="header" />
 		<slot name="main" />
-		<slot name="footer" />
+		<slot name="footer">
+			<Footer />
+		</slot>
 		<script>
 import { initLenis } from '../utils/lenis';
 

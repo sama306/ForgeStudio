@@ -1,0 +1,58 @@
+---
+const testimonials = [
+  {
+    quote: "Forge didn't just build a product — they redefined how we think about our digital presence. The depth of thinking behind every pixel is extraordinary.",
+    author: 'Sarah Chen',
+    role: 'CEO, Lumina Ventures',
+  },
+  {
+    quote: "We've worked with several design studios, but none matched Forge's combination of technical precision and creative vision. They raised our bar permanently.",
+    author: 'Marcus Rivera',
+    role: 'Head of Design, Arcadia',
+  },
+  {
+    quote: "The attention to detail was remarkable. Forge delivered a platform that feels intuitive, performs flawlessly, and looks stunning — on time and beyond expectations.",
+    author: 'Elena Kostova',
+    role: 'Product Lead, Nebula Health',
+  },
+  {
+    quote: 'A rare studio that genuinely understands both craft and strategy. Every recommendation was grounded in data, every execution polished to perfection.',
+    author: 'David Okonkwo',
+    role: 'CTO, Relay Technologies',
+  },
+];
+---
+
+<section class="bg-bg px-6 py-24" aria-label="Testimonials">
+  <div class="mx-auto max-w-6xl">
+    <h2 class="font-heading font-bold leading-none text-text" style="font-size: var(--text-h1)">
+      What Clients Say
+    </h2>
+    <p class="mt-4 max-w-xl font-sans text-muted" style="font-size: var(--text-body);">
+      Feedback from teams we've had the privilege of working with.
+    </p>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2">
+      {testimonials.map((t) => (
+        <article class="group relative rounded-2xl border border-muted/10 bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(0,0,0,0.3)]">
+          <div class="mb-6 flex items-start gap-3">
+            <div class="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent/10 text-lg font-bold text-accent" aria-hidden="true">
+              {t.author.charAt(0)}
+            </div>
+            <div>
+              <h3 class="font-heading text-sm font-semibold text-text">
+                {t.author}
+              </h3>
+              <p class="font-sans text-xs text-muted">
+                {t.role}
+              </p>
+            </div>
+          </div>
+          <blockquote class="font-sans leading-relaxed text-muted" style="font-size: var(--text-body);">
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

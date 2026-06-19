@@ -1,0 +1,72 @@
+---
+const stats = [
+  { value: 120, suffix: '+', label: 'Projects' },
+  { value: 98, suffix: '%', label: 'Client Satisfaction' },
+  { value: 16, suffix: '', label: 'Countries' },
+  { value: 5, suffix: '', label: 'Years Experience' },
+];
+---
+
+<section class="stats-section bg-bg px-6 py-24" aria-label="Statistics">
+  <div class="mx-auto max-w-5xl">
+    <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((stat) => (
+        <div class="text-center">
+          <div class="font-heading text-5xl font-bold text-accent lg:text-6xl">
+            <span class="stat-value" data-target={stat.value}>{stat.suffix ? '0' : '0'}</span>
+            <span>{stat.suffix}</span>
+          </div>
+          <p class="mt-2 font-heading text-sm font-semibold tracking-wide text-muted">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getLenis } from '../../utils/lenis';
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const section = document.querySelector('.stats-section');
+const counters = section?.querySelectorAll('.stat-value');
+
+if (!prefersReduced && section && counters?.length) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+
+  gsap.ticker.lagSmoothing(0);
+
+  counters.forEach((el) => {
+    const target = parseInt(el.getAttribute('data-target') || '0', 10);
+
+    gsap.fromTo(
+      el,
+      { textContent: 0 },
+      {
+        textContent: target,
+        duration: 2,
+        ease: 'power2.out',
+        snap: { textContent: 1 },
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+          once: true,
+        },
+      }
+    );
+  });
+} else if (counters?.length) {
+  counters.forEach(function (el) {
+    el.textContent = el.getAttribute('data-target') || '0';
+  });
+}
+</script>
