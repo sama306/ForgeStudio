@@ -24,6 +24,15 @@ const { title = 'Forge Studio', description = 'Designing Digital Experiences Tha
 		<slot name="header" />
 		<slot name="main" />
 		<slot name="footer" />
+		<script>
+import { initLenis } from '../utils/lenis';
+
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initLenis);
+} else {
+  setTimeout(initLenis, 200);
+}
+</script>
 	</body>
 </html>
 
