@@ -1,0 +1,110 @@
+---
+const services = [
+  {
+    title: 'Web Design',
+    description: 'Websites that blend striking visuals with intuitive interaction, built to engage and convert.',
+    icon: 'web',
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'User interfaces crafted from research and iteration, where every pixel earns its place.',
+    icon: 'uiux',
+  },
+  {
+    title: 'Development',
+    description: 'Clean, performant code that brings designs to life — from static sites to rich web apps.',
+    icon: 'dev',
+  },
+  {
+    title: 'Brand Identity',
+    description: 'Visual identities that communicate who you are — logos, systems, and brand languages.',
+    icon: 'brand',
+  },
+  {
+    title: 'Motion Design',
+    description: 'Purposeful animation that guides attention, tells stories, and elevates the user experience.',
+    icon: 'motion',
+  },
+  {
+    title: 'Strategy',
+    description: 'Research-driven digital strategy that aligns business goals with user needs and market position.',
+    icon: 'strategy',
+  },
+];
+---
+
+<section class="bg-bg px-6 py-24" aria-label="Services">
+  <div class="mx-auto max-w-6xl">
+    <h2 class="font-heading font-bold leading-none text-text" style="font-size: var(--text-h1)">
+      Services
+    </h2>
+    <p class="mt-4 max-w-xl font-sans text-muted" style="font-size: var(--text-body);">
+      From concept to launch, we craft digital experiences that make an impact.
+    </p>
+
+    <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <article class="group rounded-2xl border border-muted/10 bg-surface p-8">
+          <div class="text-accent" role="img" aria-label={service.title}>
+            {
+              service.icon === 'web' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="5" width="26" height="20" rx="3" stroke="currentColor" stroke-width="1.5" />
+                <path d="M3 11h26" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="7" cy="8.5" r="1" fill="currentColor" />
+                <circle cx="10.5" cy="8.5" r="1" fill="currentColor" />
+                <circle cx="14" cy="8.5" r="1" fill="currentColor" />
+              </svg>
+            }
+            {
+              service.icon === 'uiux' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="4" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.5" />
+                <rect x="8" y="16" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="16" cy="9" r="2" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            }
+            {
+              service.icon === 'dev' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10 8L4 16l6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M22 8l6 8-6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M18 6l-4 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            }
+            {
+              service.icon === 'brand' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="16" cy="16" r="5" stroke="currentColor" stroke-width="1.5" />
+                <path d="M16 4v24" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2" />
+                <path d="M4 16h24" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2" />
+              </svg>
+            }
+            {
+              service.icon === 'motion' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="3" y="5" width="26" height="22" rx="3" stroke="currentColor" stroke-width="1.5" />
+                <path d="M12 12l6 4-6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            }
+            {
+              service.icon === 'strategy' &&
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M16 4v24M4 16h24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M8 8l6 6M24 8l-6 6M24 24l-6-6M8 24l6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="16" cy="16" r="2" fill="currentColor" />
+              </svg>
+            }
+          </div>
+          <h3 class="mt-6 font-heading text-xl font-semibold text-text">
+            {service.title}
+          </h3>
+          <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+            {service.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
