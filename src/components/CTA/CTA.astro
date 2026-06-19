@@ -25,6 +25,7 @@ const lines = heading.split('\n');
           i === 0 && 'text-accent',
         ]}
         style="font-size: var(--text-hero);"
+        data-reveal
       >
         {line}
       </p>
@@ -39,6 +40,9 @@ const lines = heading.split('\n');
 </section>
 
 <script>
+import { revealHeadings } from '../../utils/textReveal';
+revealHeadings('[data-reveal]', { stagger: 0.06, yOffset: 30 });
+
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
