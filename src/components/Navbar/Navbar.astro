@@ -18,7 +18,7 @@ const links = [
       class="mobile-menu-btn relative z-50 flex size-10 items-center justify-center md:hidden"
       aria-label="Toggle navigation menu"
       aria-expanded="false"
-      aria-controls="nav-menu"
+      aria-controls="nav-menu-mobile"
       type="button"
     >
       <span class="sr-only">Menu</span>
@@ -54,9 +54,9 @@ const links = [
     </ul>
   </div>
 
-  <div
+    <div
     id="nav-menu-mobile"
-    class="mobile-panel fixed inset-0 z-40 hidden bg-bg px-6 pt-24"
+    class="mobile-panel fixed inset-0 z-40 bg-bg px-6 pt-24"
     role="dialog"
     aria-modal="true"
     aria-label="Navigation menu"
@@ -66,7 +66,7 @@ const links = [
         <li>
           <a
             href={link.href}
-            class="font-heading text-2xl text-text transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            class="mobile-link font-heading text-2xl text-text transition-colors duration-200 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             {link.label}
           </a>
@@ -76,24 +76,68 @@ const links = [
   </div>
 </nav>
 
+<style>
+  .mobile-panel {
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(100%);
+    opacity: 0;
+    transition:
+      visibility 0s 0.3s,
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+  }
+
+  .mobile-panel.open {
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+    opacity: 1;
+    transition:
+      visibility 0s 0s,
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-panel {
+      transition: none;
+    }
+  }
+</style>
+
 <script>
-// Mobile menu
 const menuBtn = document.querySelector('.mobile-menu-btn');
 const panel = document.querySelector('#nav-menu-mobile');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function openMenu() {
+  menuBtn?.setAttribute('aria-expanded', 'true');
+  panel?.classList.add('open');
+  document.body.classList.add('overflow-hidden');
+}
+
+function closeMenu() {
+  menuBtn?.setAttribute('aria-expanded', 'false');
+  panel?.classList.remove('open');
+  document.body.classList.remove('overflow-hidden');
+}
 
 menuBtn?.addEventListener('click', () => {
   const open = menuBtn.getAttribute('aria-expanded') === 'true';
-  menuBtn.setAttribute('aria-expanded', String(!open));
-  panel?.classList.toggle('hidden', open);
-  document.body.classList.toggle('overflow-hidden', !open);
+  if (open) closeMenu();
+  else openMenu();
 });
 
-document.querySelectorAll('#nav-menu-mobile a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menuBtn?.setAttribute('aria-expanded', 'false');
-    panel?.classList.add('hidden');
-    document.body.classList.remove('overflow-hidden');
-  });
+mobileLinks.forEach((link) => {
+  link.addEventListener('click', closeMenu);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menuBtn?.getAttribute('aria-expanded') === 'true') {
+    closeMenu();
+    menuBtn?.focus();
+  }
 });
 
 // Theme toggle
@@ -116,7 +160,6 @@ function getPreferredTheme() {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-// Sync icon state on load
 (function initTheme() {
   const theme = getPreferredTheme();
   const isLight = theme === 'light';
