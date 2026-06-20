@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, category, coverImage, gallery, client, year, role, shortDescription, challenge, solution, result } = project.data;
+const slug = project.id;
+---
+
+<Layout
+  title={`${title} — Forge Studio`}
+  description={shortDescription}
+  ogUrl={`https://forgestudio.dev/work/${slug}`}
+>
+  <main slot="main">
+    <section class="hero-reveal relative flex min-h-[70vh] items-end overflow-hidden bg-bg">
+      <div class="project-image-reveal absolute inset-0 bg-gradient-to-br from-accent/10 via-bg to-accent/5" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" aria-hidden="true" />
+      <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 md:pb-24">
+        <span class="font-heading text-xs font-semibold tracking-widest text-accent">
+          {category}
+        </span>
+        <h1 class="mt-4 max-w-4xl font-heading font-bold leading-none text-text" style="font-size: var(--text-h1)">
+          {title}
+        </h1>
+      </div>
+    </section>
+
+    <section class="border-y border-muted/10 bg-surface">
+      <div class="mx-auto max-w-6xl px-6 py-8">
+        <dl class="grid gap-8 sm:grid-cols-3">
+          <div>
+            <dt class="font-heading text-xs font-semibold tracking-widest text-muted">Cliente</dt>
+            <dd class="mt-2 font-heading text-lg font-semibold text-text">{client}</dd>
+          </div>
+          <div>
+            <dt class="font-heading text-xs font-semibold tracking-widest text-muted">Año</dt>
+            <dd class="mt-2 font-heading text-lg font-semibold text-text">{year}</dd>
+          </div>
+          <div>
+            <dt class="font-heading text-xs font-semibold tracking-widest text-muted">Rol</dt>
+            <dd class="mt-2 font-heading text-lg font-semibold text-text">{role}</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-3xl px-6 py-16 md:py-24">
+      <section id="challenge" class="mb-16">
+        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El desafío</h2>
+        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+          {challenge}
+        </p>
+      </section>
+
+      <section id="solution" class="mb-16">
+        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>La solución</h2>
+        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+          {solution}
+        </p>
+      </section>
+
+      <section id="result" class="mb-16">
+        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El resultado</h2>
+        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+          {result}
+        </p>
+      </section>
+
+      {
+        gallery.length > 0 && (
+          <section id="gallery">
+            <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>Galería</h2>
+            <div class="mt-8 grid gap-6 sm:grid-cols-2">
+              {gallery.map((imgSrc, i) => (
+                <figure class="gallery-item overflow-hidden rounded-2xl">
+                  <div
+                    class="project-image-reveal aspect-[16/10] bg-gradient-to-br from-accent/10 via-bg to-accent/5"
+                    aria-hidden="true"
+                  />
+                  <figcaption class="sr-only">
+                    {title} — vista {i + 1}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )
+      }
+    </div>
+
+    <section class="border-t border-muted/10 bg-bg px-6 py-16 md:py-24">
+      <div class="mx-auto flex max-w-3xl flex-col items-center gap-8">
+        <a
+          href="/work"
+          class="group inline-flex items-center gap-2 font-heading text-sm font-semibold tracking-wide text-muted transition-colors duration-200 hover:text-accent focus-visible:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        >
+          <span aria-hidden="true" class="transition-transform duration-200 group-hover:-translate-x-1">&larr;</span>
+          Back to Work
+        </a>
+
+        <a
+          href="/contact"
+          class="cta-btn inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 text-sm font-semibold tracking-wide text-bg transition-all duration-200 md:h-16 md:px-12 md:text-base"
+        >
+          Start your project &rarr;
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  .project-image-reveal {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    transform: scale(1.05);
+    will-change: transform, clip-path;
+  }
+</style>
+
+<style>
+  .cta-btn {
+    transition:
+      box-shadow 0.2s ease,
+      color 0.2s ease;
+    will-change: transform;
+  }
+
+  .cta-btn:hover,
+  .cta-btn:focus-visible {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+
+  .cta-btn:focus-visible {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-btn {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getLenis } from '../../utils/lenis';
+import { revealHeadings } from '../../utils/textReveal';
+
+revealHeadings('[data-reveal]');
+
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReduced) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = getLenis();
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+
+  gsap.ticker.lagSmoothing(0);
+
+  const heroSection = document.querySelector<HTMLElement>('.hero-reveal');
+  const heroImg = heroSection?.querySelector<HTMLElement>('.project-image-reveal');
+  if (heroImg && heroSection) {
+    gsap.fromTo(
+      heroImg,
+      {
+        clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
+        scale: 1.05,
+      },
+      {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        scale: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: heroSection,
+          start: 'top 70%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  }
+
+  document.querySelectorAll<HTMLElement>('.gallery-item').forEach(function (item) {
+    const img = item.querySelector<HTMLElement>('.project-image-reveal');
+    if (!img) return;
+
+    gsap.fromTo(
+      img,
+      {
+        clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)',
+        scale: 1.05,
+      },
+      {
+        clipPath: 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)',
+        scale: 1,
+        duration: 0.8,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+} else {
+  document.querySelectorAll<HTMLElement>('.project-image-reveal').forEach(function (img) {
+    img.style.clipPath = 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)';
+    img.style.transform = 'scale(1)';
+  });
+}
+</script>
