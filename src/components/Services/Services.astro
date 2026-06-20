@@ -140,6 +140,7 @@ const services = [
 import { revealHeadings } from '../../utils/textReveal';
 revealHeadings('[data-reveal]');
 
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 if (!isTouch) {

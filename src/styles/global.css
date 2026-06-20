@@ -38,6 +38,16 @@
   --color-accent: #FF6B00;
 }
 
+/* Light mode contrast — darkened accent for AA compliance */
+:root.light .text-accent {
+  color: #B84300;
+}
+
+.light .bg-accent.text-bg,
+:root.light .bg-accent.text-bg {
+  color: #0B0B0B;
+}
+
 /* Theme transition — crossfade suave */
 @media (prefers-reduced-motion: no-preference) {
   :root,

@@ -57,6 +57,18 @@ const testimonials = [
   </div>
 </section>
 
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    .group {
+      transition: none;
+    }
+
+    .group:hover {
+      transform: none;
+    }
+  }
+</style>
+
 <script>
 import { revealHeadings } from '../../utils/textReveal';
 revealHeadings('[data-reveal]');
