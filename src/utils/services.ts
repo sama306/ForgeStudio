@@ -14,7 +14,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'web-design',
-    title: 'Web Design',
+    title: 'Diseño Web',
     description:
       'Creamos sitios web que comunican la esencia de tu marca a través de un equilibrio preciso entre estética visual, narrativa digital y funcionalidad. Cada decisión de diseño responde a una intención estratégica: guiar al usuario, generar confianza y convertir visitantes en clientes.',
     includes: [
@@ -32,7 +32,7 @@ export const services: Service[] = [
   },
   {
     id: 'uiux-design',
-    title: 'UI/UX Design',
+    title: 'Diseño UI/UX',
     description:
       'Diseñamos experiencias digitales centradas en el usuario, donde cada interacción está respaldada por investigación, iteración y validación constante. No diseñamos solo pantallas: diseñamos recorridos, emociones y momentos que hacen que un producto se sienta vivo.',
     includes: [
@@ -51,7 +51,7 @@ export const services: Service[] = [
   },
   {
     id: 'development',
-    title: 'Development',
+    title: 'Desarrollo',
     description:
       'Convertimos diseños en productos digitales sólidos con código limpio, optimizado y preparado para escalar. Trabajamos con tecnologías modernas que garantizan performance, accesibilidad y una experiencia de desarrollo sostenible en el tiempo.',
     includes: [
@@ -70,7 +70,7 @@ export const services: Service[] = [
   },
   {
     id: 'brand-identity',
-    title: 'Brand Identity',
+    title: 'Identidad de Marca',
     description:
       'Construimos identidades visuales completas que traducen la estrategia de tu marca en un sistema coherente, memorable y flexible. Desde el concepto hasta la aplicación, cada elemento visual comunica quién eres y por qué existes.',
     includes: [
@@ -108,7 +108,7 @@ export const services: Service[] = [
   },
   {
     id: 'strategy',
-    title: 'Strategy',
+    title: 'Estrategia',
     description:
       'Diseñamos hojas de ruta digitales basadas en investigación profunda, datos concretos y una comprensión clara del mercado. No hacemos estrategia por hacerla: cada recomendación responde a un objetivo medible y a una oportunidad real de crecimiento.',
     includes: [

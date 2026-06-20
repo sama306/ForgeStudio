@@ -1,9 +1,9 @@
 ---
 const links = [
-  { label: 'Work', href: '/work' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Trabajos', href: '/work' },
+  { label: 'Servicios', href: '/services' },
+  { label: 'Nosotros', href: '/about' },
+  { label: 'Contacto', href: '/contact' },
 ];
 
 const socials = [
@@ -14,19 +14,19 @@ const socials = [
 ];
 ---
 
-<footer class="border-t border-muted/10 bg-bg px-6 py-16" aria-label="Footer">
+<footer class="border-t border-muted/10 bg-bg px-6 py-16" aria-label="Pie de página">
   <div class="mx-auto max-w-6xl">
     <div class="flex flex-col items-center justify-between gap-10 md:flex-row md:items-start">
       <div class="text-center md:text-left">
-        <a href="/" class="font-heading text-xl tracking-tight text-text" aria-label="Forge Studio — Home">
+        <a href="/" class="font-heading text-xl tracking-tight text-text" aria-label="Forge Studio — Inicio">
           Forge<span class="text-accent">Studio</span>
         </a>
         <p class="mt-2 font-sans text-xs text-muted">
-          Designing Digital Experiences That Convert.
+          Experiencias digitales que convierten.
         </p>
       </div>
 
-      <nav aria-label="Footer navigation">
+      <nav aria-label="Navegación del footer">
         <ul class="flex flex-wrap justify-center gap-6" role="list">
           {links.map((link) => (
             <li>
@@ -41,7 +41,7 @@ const socials = [
         </ul>
       </nav>
 
-      <nav aria-label="Social media links">
+      <nav aria-label="Redes sociales">
         <ul class="flex gap-4" role="list">
           {socials.map((s) => (
             <li>
@@ -62,7 +62,7 @@ const socials = [
 
     <div class="mt-12 border-t border-muted/10 pt-6 text-center">
       <p class="font-sans text-xs text-muted">
-        &copy; {new Date().getFullYear()} Forge Studio. All rights reserved.
+        &copy; {new Date().getFullYear()} Forge Studio. Todos los derechos reservados.
       </p>
     </div>
   </div>

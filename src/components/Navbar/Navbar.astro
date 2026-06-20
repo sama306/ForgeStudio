@@ -1,27 +1,27 @@
 ---
 const links = [
-  { label: 'Home', href: '/' },
-  { label: 'Work', href: '/work' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Inicio', href: '/' },
+  { label: 'Trabajos', href: '/work' },
+  { label: 'Servicios', href: '/services' },
+  { label: 'Nosotros', href: '/about' },
+  { label: 'Contacto', href: '/contact' },
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md" aria-label="Main navigation">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md" aria-label="Navegación principal">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-    <a href="/" class="font-heading text-xl tracking-tight text-text" aria-label="Forge Studio — Home">
+    <a href="/" class="font-heading text-xl tracking-tight text-text" aria-label="Forge Studio — Inicio">
       Forge<span class="text-accent">Studio</span>
     </a>
 
     <button
       class="mobile-menu-btn relative z-50 flex size-10 items-center justify-center md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-      aria-label="Toggle navigation menu"
+      aria-label="Abrir o cerrar menú"
       aria-expanded="false"
       aria-controls="nav-menu-mobile"
       type="button"
     >
-      <span class="sr-only">Menu</span>
+      <span class="sr-only">Menú</span>
       <span class="hamburger-line block h-0.5 w-5 rounded bg-text transition-transform duration-200 before:block before:h-0.5 before:w-5 before:rounded before:bg-text before:transition-transform before:duration-200 after:block after:h-0.5 after:w-5 after:rounded after:bg-text after:transition-transform after:duration-200"></span>
     </button>
 
@@ -39,7 +39,7 @@ const links = [
       <li>
         <button
           class="theme-toggle flex size-9 items-center justify-center rounded-full border border-muted/20 text-muted transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-          aria-label="Toggle theme"
+          aria-label="Cambiar tema"
           type="button"
         >
           <svg class="theme-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -63,7 +63,7 @@ const links = [
       class="mobile-panel absolute inset-0 bg-bg px-6 pt-24"
       role="dialog"
       aria-modal="true"
-      aria-label="Navigation menu"
+      aria-label="Menú de navegación"
     >
       <ul class="flex flex-col gap-6" role="list">
         {links.map((link) => (
@@ -165,7 +165,7 @@ function setTheme(theme: string) {
   localStorage.setItem('theme', theme);
   moon?.classList.toggle('hidden', isLight);
   sun?.classList.toggle('hidden', !isLight);
-  themeBtn?.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+  themeBtn?.setAttribute('aria-label', isLight ? 'Modo oscuro' : 'Modo claro');
 }
 
 function getPreferredTheme() {
@@ -179,7 +179,7 @@ function getPreferredTheme() {
   const isLight = theme === 'light';
   moon?.classList.toggle('hidden', isLight);
   sun?.classList.toggle('hidden', !isLight);
-  themeBtn?.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+  themeBtn?.setAttribute('aria-label', isLight ? 'Modo oscuro' : 'Modo claro');
 })();
 
 themeBtn?.addEventListener('click', () => {

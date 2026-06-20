@@ -5,12 +5,12 @@ export interface Props {
   href?: string;
 }
 
-const { heading = "Let's build\nsomething remarkable.", label = 'Start your project →', href = '/contact' } = Astro.props;
+const { heading = "Construyamos\nalgo extraordinario.", label = 'Inicia tu proyecto →', href = '/contact' } = Astro.props;
 
 const lines = heading.split('\n');
 ---
 
-<section class="cta-section relative flex min-h-screen items-center justify-center overflow-hidden bg-bg" aria-label="Call to action">
+<section class="cta-section relative flex min-h-screen items-center justify-center overflow-hidden bg-bg" aria-label="Llamado a la acción">
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <div class="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/5 blur-3xl" />
     <div class="absolute -top-40 right-0 h-[400px] w-[400px] rounded-full bg-accent/3 blur-3xl" />
