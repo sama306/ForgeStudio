@@ -9,6 +9,8 @@
 
   /* Acento */
   --color-accent: #FF6B00;
+  --color-accent-soft: #0B0B0B;
+  --color-section-alt: #0B0B0B;
 
   /* Tipografía — familias */
   --font-sans: "Inter", system-ui, sans-serif;
@@ -22,6 +24,8 @@
   --color-text: #FFFFFF;
   --color-muted: #A0A0A0;
   --color-accent: #FF6B00;
+  --color-accent-soft: #0B0B0B;
+  --color-section-alt: #0B0B0B;
 
   --text-hero: clamp(2.5rem, 8vw, 7rem);
   --text-h1: clamp(2rem, 5vw, 4rem);
@@ -31,11 +35,13 @@
 }
 
 :root.light {
-  --color-bg: #FFFFFF;
-  --color-surface: #F5F5F5;
+  --color-bg: #F7F3EF;
+  --color-surface: #FFFFFF;
   --color-text: #0B0B0B;
   --color-muted: #6B6B6B;
   --color-accent: #FF6B00;
+  --color-accent-soft: #FCE8D8;
+  --color-section-alt: #FDF2EA;
 }
 
 /* Light mode contrast — darkened accent for AA compliance */
