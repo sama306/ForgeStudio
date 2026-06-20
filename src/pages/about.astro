@@ -1,11 +1,143 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Stats } from '../components/Stats';
 ---
 
 <Layout
-	title="About — Forge Studio"
-	description="Learn about Forge Studio — a digital design agency crafting premium brand identities, web experiences, and high-performance products."
-	ogUrl="https://forgestudio.dev/about"
+  title="Sobre Forge Studio — Forge Studio"
+  description="Conocé la historia, los valores y el equipo detrás de Forge Studio. Un estudio creativo que transforma marcas en experiencias digitales memorables."
+  ogUrl="https://forgestudio.dev/about"
 >
-	<h1>Coming soon</h1>
+  <main slot="main">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden px-6 pb-24 pt-32" aria-label="Sobre Forge Studio">
+      <div class="mx-auto max-w-3xl text-center">
+        <h1 class="font-heading text-[var(--text-h1)] font-bold leading-tight text-text">
+          Sobre <span class="text-accent">Forge Studio</span>
+        </h1>
+        <p class="mt-6 font-sans text-lg leading-relaxed text-muted lg:text-xl">
+          Somos un estudio creativo que construye productos digitales con
+          propósito. Creemos que el diseño no es decoración: es la herramienta
+          más poderosa para conectar marcas con personas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Historia -->
+    <section class="bg-surface px-6 py-24" aria-labelledby="historia-heading">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="historia-heading" class="font-heading text-[var(--text-h2)] font-bold text-text" data-reveal>
+          Nuestra Historia
+        </h2>
+        <div class="mt-8 space-y-5 font-sans text-base leading-relaxed text-muted">
+          <p>
+            Forge Studio nació en 2020 de una convicción simple: el talento
+            técnico y la sensibilidad artística no deberían estar reñidos.
+            Fundado por un equipo de diseñadores e ingenieros que compartían
+            la frustración de ver productos digitales visualmente impecables
+            pero funcionalmente frágiles —o viceversa—, el estudio se propuso
+            cerrar esa brecha desde el primer día.
+          </p>
+          <p>
+            Lo que comenzó como un colectivo freelance de tres personas hoy es
+            un estudio con presencia en más de quince países. Nunca buscamos
+            crecer por crecer: cada proyecto que aceptamos pasa por un filtro
+            riguroso de alineación con nuestra visión. Preferimos decir "no" a
+            un cliente que comprometer la calidad del resultado final.
+          </p>
+          <p>
+            Nuestra misión es clara: ayudar a empresas y fundadores a traducir
+            su visión en experiencias digitales que realmente funcionen. No
+            perseguimos tendencias ni entregamos plantillas. Estudiamos,
+            cuestionamos y construimos hasta que cada píxel, cada interacción y
+            cada línea de código tenga una razón de existir.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="px-6 py-24" aria-labelledby="valores-heading">
+      <div class="mx-auto max-w-5xl">
+        <h2 id="valores-heading" class="font-heading text-[var(--text-h2)] font-bold text-text" data-reveal>
+          Cómo Trabajamos
+        </h2>
+        <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="value-card rounded-xl border border-white/5 bg-surface p-8">
+            <h3 class="font-heading text-xl font-semibold text-text">
+              Calidad sobre cantidad
+            </h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+              Tomamos pocos proyectos para dedicarles toda nuestra atención.
+              Preferimos una ejecución impecable a quince trabajos mediocres.
+            </p>
+          </article>
+          <article class="value-card rounded-xl border border-white/5 bg-surface p-8">
+            <h3 class="font-heading text-xl font-semibold text-text">
+              Diseño con propósito
+            </h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+              Cada elemento visual responde a una necesidad real del usuario.
+              Sin decoración vacía, sin patrones prestados sin criterio.
+            </p>
+          </article>
+          <article class="value-card rounded-xl border border-white/5 bg-surface p-8">
+            <h3 class="font-heading text-xl font-semibold text-text">
+              Colaboración cercana
+            </h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+              Trabajamos codo a codo con nuestros clientes. No hay cajas
+              negras ni sorpresas de última hora: todo se construye juntos.
+            </p>
+          </article>
+          <article class="value-card rounded-xl border border-white/5 bg-surface p-8">
+            <h3 class="font-heading text-xl font-semibold text-text">
+              Transparencia total
+            </h3>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-muted">
+              Procesos abiertos, presupuestos claros y comunicación directa.
+              Confiamos en que la honestidad es la base de cualquier relación
+              profesional duradera.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <Stats />
+
+  </main>
 </Layout>
+
+<style>
+  .value-card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.25s ease;
+  }
+
+  .value-card:hover {
+    box-shadow:
+      0 12px 32px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 107, 0, 0.06);
+    transform: translateY(-6px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .value-card {
+      transition: none;
+    }
+
+    .value-card:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+import { revealHeadings } from '../utils/textReveal';
+revealHeadings('[data-reveal]');
+</script>
