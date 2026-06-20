@@ -53,49 +53,51 @@ const slug = project.id;
       </div>
     </section>
 
-    <div class="mx-auto max-w-3xl px-6 py-16 md:py-24">
-      <section id="challenge" class="mb-16">
-        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El desafío</h2>
-        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
-          {challenge}
-        </p>
-      </section>
+    <section class="bg-bg px-6 py-16 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <section id="challenge" class="mb-16">
+          <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El desafío</h2>
+          <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+            {challenge}
+          </p>
+        </section>
 
-      <section id="solution" class="mb-16">
-        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>La solución</h2>
-        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
-          {solution}
-        </p>
-      </section>
+        <section id="solution" class="mb-16">
+          <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>La solución</h2>
+          <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+            {solution}
+          </p>
+        </section>
 
-      <section id="result" class="mb-16">
-        <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El resultado</h2>
-        <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
-          {result}
-        </p>
-      </section>
+        <section id="result" class="mb-16">
+          <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El resultado</h2>
+          <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
+            {result}
+          </p>
+        </section>
 
-      {
-        gallery.length > 0 && (
-          <section id="gallery">
-            <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>Galería</h2>
-            <div class="mt-8 grid gap-6 sm:grid-cols-2">
-              {gallery.map((imgSrc, i) => (
-                <figure class="gallery-item overflow-hidden rounded-2xl">
-                  <div
-                    class="project-image-reveal aspect-[16/10] bg-gradient-to-br from-accent/10 via-bg to-accent/5"
-                    aria-hidden="true"
-                  />
-                  <figcaption class="sr-only">
-                    {title} — vista {i + 1}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        )
-      }
-    </div>
+        {
+          gallery.length > 0 && (
+            <section id="gallery">
+              <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>Galería</h2>
+              <div class="mt-8 grid gap-6 sm:grid-cols-2">
+                {gallery.map((imgSrc, i) => (
+                  <figure class="gallery-item overflow-hidden rounded-2xl">
+                    <div
+                      class="project-image-reveal aspect-[16/10] bg-gradient-to-br from-accent/10 via-bg to-accent/5"
+                      aria-hidden="true"
+                    />
+                    <figcaption class="sr-only">
+                      {title} — vista {i + 1}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )
+        }
+      </div>
+    </section>
 
     <section class="border-t border-muted/10 bg-bg px-6 py-16 md:py-24">
       <div class="mx-auto flex max-w-3xl flex-col items-center gap-8">
