@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const projects = defineCollection({
@@ -6,7 +7,15 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     category: z.string(),
-    description: z.string(),
+    shortDescription: z.string(),
+    coverImage: z.string().optional().default(''),
+    gallery: z.array(z.string()).optional().default([]),
+    client: z.string(),
+    year: z.number(),
+    role: z.string(),
+    challenge: z.string(),
+    solution: z.string(),
+    result: z.string(),
   }),
 });
 

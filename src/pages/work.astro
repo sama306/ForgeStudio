@@ -1,11 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { ProjectCard } from '../components/ProjectCard';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
 ---
 
 <Layout
-	title="Work — Forge Studio"
-	description="Explore our portfolio of digital products, brand identities, and web experiences — from fintech to health and beyond."
-	ogUrl="https://forgestudio.dev/work"
+  title="Our Work — Forge Studio"
+  description="Explore our full portfolio of digital products, brand identities, and web experiences — from fintech to health and beyond."
+  ogUrl="https://forgestudio.dev/work"
 >
-	<h1>Coming soon</h1>
+  <main slot="main">
+    <section class="bg-bg px-6 py-24">
+      <div class="mx-auto max-w-6xl">
+        <h1 class="font-heading font-bold leading-none text-text" style="font-size: var(--text-h1)">
+          Our Work
+        </h1>
+        <p class="mt-4 max-w-xl font-sans text-muted" style="font-size: var(--text-body);">
+          Every project is a partnership. Browse our full portfolio of design, development, and strategy work.
+        </p>
+
+        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+          {projects.map((project) => (
+            <ProjectCard {project} />
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
