@@ -121,9 +121,8 @@ const links = [
 </style>
 
 <script>
-const menuBtn = document.querySelector('.mobile-menu-btn');
-const wrapper = document.querySelector('.mobile-wrapper');
-const panel = document.querySelector('#nav-menu-mobile');
+const menuBtn: HTMLElement | null = document.querySelector('.mobile-menu-btn');
+const wrapper: HTMLElement | null = document.querySelector('.mobile-wrapper');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
 function openMenu() {
@@ -160,7 +159,7 @@ const themeBtn = document.querySelector('.theme-toggle');
 const moon = themeBtn?.querySelector('.theme-moon');
 const sun = themeBtn?.querySelector('.theme-sun');
 
-function setTheme(theme) {
+function setTheme(theme: string) {
   const isLight = theme === 'light';
   document.documentElement.classList.toggle('light', isLight);
   localStorage.setItem('theme', theme);

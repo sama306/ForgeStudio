@@ -13,7 +13,6 @@ export function initLenis(): void {
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: !prefersReduced,
-    smoothTouch: false,
     touchMultiplier: 2,
   });
 

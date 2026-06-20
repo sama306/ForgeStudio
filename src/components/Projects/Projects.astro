@@ -90,7 +90,7 @@ if (!prefersReduced) {
     );
   });
 } else {
-  document.querySelectorAll('.project-image-reveal').forEach(function (img) {
+  document.querySelectorAll<HTMLElement>('.project-image-reveal').forEach(function (img) {
     img.style.clipPath = 'polygon(0 0%, 100% 0%, 100% 100%, 0 100%)';
     img.style.transform = 'scale(1)';
   });
