@@ -289,14 +289,22 @@ import { CTA } from '../components/CTA';
     submitBtn.classList.add('pointer-events-none', 'opacity-70');
 
     try {
-      // Simulated fetch
-      await new Promise<void>((resolve, reject) => {
-        setTimeout(() => {
-          // 80% chance success for testing
-          if (Math.random() > 0.2) resolve();
-          else reject(new Error('Simulated server error'));
-        }, 1800);
+      const endpoint = typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_FORMSPREE_ENDPOINT
+        ? import.meta.env.PUBLIC_FORMSPREE_ENDPOINT
+        : '';
+
+      if (!endpoint) {
+        throw new Error('PUBLIC_FORMSPREE_ENDPOINT no está configurado');
+      }
+
+      const formData = new FormData(form);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: { Accept: 'application/json' },
       });
+
+      if (!response.ok) throw new Error('Error en el envío');
 
       // Success
       successBox.classList.remove('hidden');
