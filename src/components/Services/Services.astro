@@ -143,9 +143,9 @@ revealHeadings('[data-reveal]');
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-if (!isTouch) {
-  document.querySelectorAll('.service-card').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
+if (!isTouch && !prefersReduced) {
+  document.querySelectorAll<HTMLElement>('.service-card').forEach((card) => {
+    card.addEventListener('mousemove', (e: MouseEvent) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;

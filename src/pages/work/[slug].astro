@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, category, coverImage, gallery, client, year, role, shortDescription, challenge, solution, result } = project.data;
+const { title, category, gallery, client, year, role, shortDescription, challenge, solution, result } = project.data;
 const slug = project.id;
 ---
 
@@ -21,7 +21,7 @@ const slug = project.id;
   ogUrl={`https://forgestudio.dev/work/${slug}`}
 >
   <main slot="main">
-    <section class="hero-reveal relative flex min-h-[70vh] items-end overflow-hidden bg-bg">
+    <section class="hero-reveal relative flex min-h-[70vh] items-end overflow-hidden bg-bg" aria-label={`${title} — hero`}>
       <div class="project-image-reveal absolute inset-0 bg-gradient-to-br from-accent/10 via-bg to-accent/5" aria-hidden="true" />
       <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" aria-hidden="true" />
       <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 md:pb-24">
@@ -34,7 +34,7 @@ const slug = project.id;
       </div>
     </section>
 
-    <section class="border-y border-muted/10 bg-surface">
+    <section class="border-y border-muted/10 bg-surface" aria-label="Detalles del proyecto">
       <div class="mx-auto max-w-6xl px-6 py-8">
         <dl class="grid gap-8 sm:grid-cols-3">
           <div>
@@ -55,21 +55,21 @@ const slug = project.id;
 
     <section class="bg-bg px-6 py-16 md:py-24">
       <div class="mx-auto max-w-3xl">
-        <section id="challenge" class="mb-16">
+        <section id="challenge" class="mb-16" aria-label="El desafío">
           <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El desafío</h2>
           <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
             {challenge}
           </p>
         </section>
 
-        <section id="solution" class="mb-16">
+        <section id="solution" class="mb-16" aria-label="La solución">
           <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>La solución</h2>
           <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
             {solution}
           </p>
         </section>
 
-        <section id="result" class="mb-16">
+        <section id="result" class="mb-16" aria-label="El resultado">
           <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>El resultado</h2>
           <p class="mt-6 font-sans text-base leading-relaxed text-muted md:text-lg">
             {result}
@@ -78,10 +78,10 @@ const slug = project.id;
 
         {
           gallery.length > 0 && (
-            <section id="gallery">
+            <section id="gallery" aria-label="Galería">
               <h2 class="font-heading text-2xl font-bold text-text md:text-3xl" data-reveal>Galería</h2>
               <div class="mt-8 grid gap-6 sm:grid-cols-2">
-                {gallery.map((imgSrc, i) => (
+                {gallery.map((_, i) => (
                   <figure class="gallery-item overflow-hidden rounded-2xl">
                     <div
                       class="project-image-reveal aspect-[16/10] bg-gradient-to-br from-accent/10 via-bg to-accent/5"
@@ -99,7 +99,7 @@ const slug = project.id;
       </div>
     </section>
 
-    <section class="border-t border-muted/10 bg-bg px-6 py-16 md:py-24">
+    <section class="border-t border-muted/10 bg-bg px-6 py-16 md:py-24" aria-label="Volver o iniciar proyecto">
       <div class="mx-auto flex max-w-3xl flex-col items-center gap-8">
         <a
           href="/work"
