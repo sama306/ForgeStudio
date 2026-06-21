@@ -21,17 +21,16 @@ import { CTA } from '../components/CTA';
         <div class="absolute -top-40 right-0 h-[400px] w-[400px] rounded-full bg-accent/3 blur-3xl" />
       </div>
 
-      <div class="relative z-10 mx-auto max-w-4xl text-center">
+      <div class="contact-hero-content relative z-10 mx-auto max-w-4xl text-center">
         <h1
-          class="font-heading font-bold leading-none text-text"
+          class="contact-heading font-heading font-bold leading-none text-text"
           style="font-size: var(--text-h1)"
-          data-reveal
         >
           Experiencias digitales
           <span class="text-accent">que convierten.</span>
         </h1>
         <p
-          class="mx-auto mt-6 max-w-2xl font-sans leading-relaxed text-muted"
+          class="contact-subtitle mx-auto mt-6 max-w-2xl font-sans leading-relaxed text-muted"
           style="font-size: var(--text-h2);"
         >
           Contanos sobre tu proyecto. Sin compromisos, sin vueltas — solo una
@@ -147,7 +146,7 @@ import { CTA } from '../components/CTA';
             <button
               type="submit"
               id="contact-submit"
-              class="contact-submit inline-flex h-14 w-full items-center justify-center rounded-full bg-accent px-12 text-sm font-semibold tracking-wide text-bg transition-all duration-300 hover:shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_40%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+              class="contact-submit inline-flex h-14 w-full items-center justify-center rounded-full bg-accent px-12 text-sm font-semibold tracking-wide text-bg transition-all duration-300 hover:shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_40%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg will-change-transform"
             >
               <span class="submit-label">Enviar mensaje</span>
               <span class="submit-spinner hidden" aria-hidden="true">
@@ -199,15 +198,39 @@ import { CTA } from '../components/CTA';
 </Layout>
 
 <script>
-  interface FormElements extends HTMLFormControlsCollection {
-    name: HTMLInputElement;
-    email: HTMLInputElement;
-    subject: HTMLSelectElement;
-    message: HTMLTextAreaElement;
+import gsap from 'gsap';
+
+interface FormElements extends HTMLFormControlsCollection {
+  name: HTMLInputElement;
+  email: HTMLInputElement;
+  subject: HTMLSelectElement;
+  message: HTMLTextAreaElement;
+}
+
+// ── Reveal de entrada ──
+const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReduced) {
+  const heading = document.querySelector('.contact-heading');
+  const subtitle = document.querySelector('.contact-subtitle');
+
+  if (heading) {
+    gsap.fromTo(heading,
+      { opacity: 0, filter: 'blur(20px)', y: 24 },
+      { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.8, ease: 'power3.out' }
+    );
   }
 
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  if (!form) throw new Error('Form not found');
+  if (subtitle) {
+    gsap.fromTo(subtitle,
+      { opacity: 0, filter: 'blur(12px)', y: 16 },
+      { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.6, ease: 'power3.out', delay: 0.25 }
+    );
+  }
+}
+
+const form = document.getElementById('contact-form') as HTMLFormElement | null;
+if (!form) throw new Error('Form not found');
 
   const elements = form.elements as FormElements;
   const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement;
@@ -273,6 +296,21 @@ import { CTA } from '../components/CTA';
     });
   }
 
+  // ── Magnetic hover (submit button) ──
+  if (!prefersReduced && !('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+    submitBtn.addEventListener('mousemove', (e: MouseEvent) => {
+      if (submitBtn.disabled) return;
+      const rect = submitBtn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      submitBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.04)`;
+    });
+
+    submitBtn.addEventListener('mouseleave', () => {
+      submitBtn.style.removeProperty('transform');
+    });
+  }
+
   form.addEventListener('submit', async (e: SubmitEvent) => {
     e.preventDefault();
 
@@ -327,6 +365,12 @@ import { CTA } from '../components/CTA';
 </script>
 
 <style>
+  .contact-heading,
+  .contact-subtitle {
+    opacity: 0;
+    filter: blur(20px);
+  }
+
   .contact-input {
     transition:
       border-color 0.25s ease,
@@ -337,15 +381,27 @@ import { CTA } from '../components/CTA';
     border-color: var(--color-muted);
   }
 
+  .contact-input:focus,
   .contact-input:focus-visible {
     border-color: var(--color-accent);
+    box-shadow:
+      0 0 0 1px var(--color-accent),
+      0 0 20px color-mix(in srgb, var(--color-accent) 25%, transparent);
+    outline: none;
   }
 
   .contact-submit {
     transition:
       background-color 0.3s ease,
       box-shadow 0.3s ease,
-      opacity 0.3s ease;
+      opacity 0.3s ease,
+      transform 0.15s ease;
+    will-change: transform;
+  }
+
+  .contact-submit:hover,
+  .contact-submit:focus-visible {
+    box-shadow: 0 0 24px color-mix(in srgb, var(--color-accent) 40%, transparent);
   }
 
   .contact-submit:focus-visible {
@@ -353,6 +409,12 @@ import { CTA } from '../components/CTA';
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .contact-heading,
+    .contact-subtitle {
+      opacity: 1;
+      filter: blur(0);
+    }
+
     .contact-input,
     .contact-submit {
       transition: none;
