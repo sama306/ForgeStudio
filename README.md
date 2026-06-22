@@ -4,8 +4,7 @@
 
 Landing page premium de **Forge Studio**, una marca ficticia de estudio
 creativo especializado en diseño, desarrollo web y branding. El proyecto
-simula un producto real de nivel profesional y sirve como pieza principal
-de portfolio, demostrando dominio de **Astro**, **Tailwind CSS**,
+simula un producto real de nivel profesional, demostrando dominio de **Astro**, **Tailwind CSS**,
 animaciones avanzadas, accesibilidad y optimización.
 
 ## ✅ Proyecto finalizado
@@ -29,19 +28,6 @@ proyecto está listo para deploy y revisión.
 | **Accesibilidad** | ARIA, foco visible, navegación por teclado, `prefers-reduced-motion`, HTML semántico |
 | **Responsive** | Mobile-first, menú hamburguesa con overlay animado |
 | **Performance** | Fuentes con `swap`, Lenis diferido, animaciones con `transform`/`opacity` |
-
-#### Posibles mejoras futuras (opcional)
-
-- Blog con MDX
-- Transiciones animadas entre páginas (Astro View Transitions)
-- Preloader elegante en primera carga
-- Cursor personalizado
-- Menú de navegación con animaciones avanzadas
-- Transición suave en el cambio de tema Dark/Light
-
-Ninguna de estas fue priorizada porque no aportaban valor significativo a
-los objetivos de Lighthouse ni a la percepción del proyecto como producto
-terminado.
 
 ## Stack
 
