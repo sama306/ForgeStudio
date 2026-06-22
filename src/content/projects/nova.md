@@ -2,7 +2,7 @@
 title: "Nova"
 category: "Identidad de Marca"
 shortDescription: "Identidad visual completa para una fintech, desde el logotipo hasta el ecosistema digital — diseñada para comunicar confianza e innovación."
-coverImage: "/images/projects/nova/cover.jpg"
+coverImage: "/images/projects/nova/cover.webp"
 gallery:
   - "/images/projects/nova/gallery-1.jpg"
   - "/images/projects/nova/gallery-2.jpg"

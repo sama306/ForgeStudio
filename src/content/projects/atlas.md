@@ -2,7 +2,7 @@
 title: "Atlas"
 category: "Desarrollo"
 shortDescription: "Una plataforma de mapas de alto rendimiento que procesa millones de puntos de datos en tiempo real, construida con WebGL y optimizada para cualquier dispositivo."
-coverImage: "/images/projects/atlas/cover.jpg"
+coverImage: "/images/projects/atlas/cover.webp"
 gallery:
   - "/images/projects/atlas/gallery-1.jpg"
   - "/images/projects/atlas/gallery-2.jpg"

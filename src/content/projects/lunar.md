@@ -2,7 +2,7 @@
 title: "Lunar"
 category: "Diseño UI/UX"
 shortDescription: "Una experiencia de e-commerce mobile-first que reinventa el recorrido de compra mediante navegación por gestos y personalización contextual."
-coverImage: "/images/projects/lunar/cover.jpg"
+coverImage: "/images/projects/lunar/cover.webp"
 gallery:
   - "/images/projects/lunar/gallery-1.jpg"
   - "/images/projects/lunar/gallery-2.jpg"

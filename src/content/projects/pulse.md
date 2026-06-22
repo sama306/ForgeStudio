@@ -2,7 +2,7 @@
 title: "Pulse"
 category: "Diseño Web"
 shortDescription: "Un dashboard de salud que transforma datos complejos en información clara y accionable — con foco en accesibilidad y respuesta en tiempo real."
-coverImage: "/images/projects/pulse/cover.jpg"
+coverImage: "/images/projects/pulse/cover.webp"
 gallery:
   - "/images/projects/pulse/gallery-1.jpg"
   - "/images/projects/pulse/gallery-2.jpg"

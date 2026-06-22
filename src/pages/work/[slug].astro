@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { title, category, gallery, client, year, role, shortDescription, challenge, solution, result } = project.data;
+const { title, category, gallery, client, year, role, shortDescription, challenge, solution, result, coverImage } = project.data;
 const slug = project.id;
 ---
 
@@ -22,7 +22,13 @@ const slug = project.id;
 >
   <main slot="main">
     <section class="hero-reveal relative flex min-h-[70vh] items-end overflow-hidden bg-bg" aria-label={`${title} — hero`}>
-      <div class="project-image-reveal absolute inset-0 bg-gradient-to-br from-accent/10 via-bg to-accent/5" aria-hidden="true" />
+      {
+        coverImage ? (
+          <img src={coverImage} alt="" width="2400" height="1600" class="project-image-reveal absolute inset-0 size-full object-cover" aria-hidden="true" decoding="async" />
+        ) : (
+          <div class="project-image-reveal absolute inset-0 bg-gradient-to-br from-accent/10 via-bg to-accent/5" aria-hidden="true" />
+        )
+      }
       <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/60 to-transparent" aria-hidden="true" />
       <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 md:pb-24">
         <span class="font-heading text-xs font-semibold tracking-widest text-accent">

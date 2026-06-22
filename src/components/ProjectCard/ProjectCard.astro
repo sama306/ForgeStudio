@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const { project } = Astro.props;
-const { title, category, shortDescription } = project.data;
+const { title, category, shortDescription, coverImage } = project.data;
 const slug = project.id;
 ---
 
@@ -14,15 +14,16 @@ const slug = project.id;
   href={`/work/${slug}`}
   class="group block overflow-hidden rounded-2xl border border-muted/10 bg-surface transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
 >
-  <div
-    class="project-image-reveal aspect-[16/10] overflow-hidden bg-gradient-to-br from-accent/10 via-bg to-accent/5 will-change-transform"
-    aria-hidden="true"
-  >
-    <div class="flex size-full items-center justify-center">
-      <span class="font-heading text-5xl font-bold tracking-tight text-accent/20">
-        {title}
-      </span>
-    </div>
+  <div class="project-image-reveal aspect-[16/10] overflow-hidden bg-gradient-to-br from-accent/10 via-bg to-accent/5 will-change-transform" aria-hidden="true">
+    {
+      coverImage ? (
+        <img src={coverImage} alt="" width="1200" height="750" class="size-full object-cover" loading="lazy" decoding="async" />
+      ) : (
+        <div class="flex size-full items-center justify-center">
+          <span class="font-heading text-5xl font-bold tracking-tight text-accent/20">{title}</span>
+        </div>
+      )
+    }
   </div>
   <div class="p-6 md:p-8">
     <span class="font-heading text-xs font-semibold tracking-widest text-accent">
