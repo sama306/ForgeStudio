@@ -8,15 +8,50 @@ simula un producto real de nivel profesional y sirve como pieza principal
 de portfolio, demostrando dominio de **Astro**, **Tailwind CSS**,
 animaciones avanzadas, accesibilidad y optimización.
 
+## ✅ Proyecto finalizado
+
+Todas las fases del [roadmap](./docs/roadmap.md) fueron completadas. El
+proyecto está listo para deploy y revisión.
+
+### Funcionalidades implementadas
+
+| Categoría | Detalle |
+|---|---|
+| **Landing page** | Hero, Clients (carrusel infinito), Services, Process, Projects, Stats, Testimonials, CTA |
+| **Páginas adicionales** | Work (listado), Services, About, Contact — cada una con animaciones y diseño propio |
+| **Case studies** | 4 proyectos en `content/projects/` con rutas dinámicas (`/work/[slug]`) |
+| **Dark/Light mode** | Persistencia en `localStorage`, toggle en navbar, sin flash (script inline) |
+| **Animaciones** | GSAP + ScrollTrigger en Hero, Stats, Projects, Process, Contact y utilidad `textReveal` |
+| **Scroll suave** | Lenis como fuente de verdad del scroll, sincronizado con ScrollTrigger |
+| **Formulario de contacto** | Validación client-side, feedback visual y envío a Formspree (`PUBLIC_FORMSPREE_ENDPOINT`) |
+| **Páginas legales** | Términos y Privacidad, con mención de Formspree en la política de privacidad |
+| **SEO** | Open Graph, Twitter Cards, `sitemap.xml` (`@astrojs/sitemap`), `robots.txt`, URLs semánticas |
+| **Accesibilidad** | ARIA, foco visible, navegación por teclado, `prefers-reduced-motion`, HTML semántico |
+| **Responsive** | Mobile-first, menú hamburguesa con overlay animado |
+| **Performance** | Fuentes con `swap`, Lenis diferido, animaciones con `transform`/`opacity` |
+
+#### Posibles mejoras futuras (opcional)
+
+- Blog con MDX
+- Transiciones animadas entre páginas (Astro View Transitions)
+- Preloader elegante en primera carga
+- Cursor personalizado
+- Menú de navegación con animaciones avanzadas
+- Transición suave en el cambio de tema Dark/Light
+
+Ninguna de estas fue priorizada porque no aportaban valor significativo a
+los objetivos de Lighthouse ni a la percepción del proyecto como producto
+terminado.
+
 ## Stack
 
 - [Astro](https://astro.build)
 - TypeScript
-- Tailwind CSS
-- GSAP + Framer Motion
+- Tailwind CSS v4
+- GSAP (animaciones)
 - Lenis (scroll suave)
 - Astro Icon
-- MDX
+- Zod (validación de contenido)
 - Deploy: Vercel
 
 ## Requisitos
@@ -44,12 +79,13 @@ pnpm astro check  # chequeo de tipos / errores de Astro
 ```
 src/
 ├── assets/
-├── components/
-├── layouts/
-├── pages/
-├── styles/
+├── components/    # Hero, Clients, Services, Process, Projects, Stats, Testimonials, CTA, Navbar, Footer, ProjectCard
+├── layouts/       # Layout.astro (SEO, fuentes, Lenis, grain overlay)
+├── pages/         # index, work, work/[slug], services, about, contact, terms, privacy
+├── styles/        # global.css (paleta, tipografía, tokens)
 ├── content/
-└── utils/
+│   └── projects/  # atlas, lunar, nova, pulse (MD)
+└── utils/         # lenis.ts, textReveal.ts, services.ts
 ```
 
 Ver detalle completo en [`docs/architecture.md`](./docs/architecture.md).
@@ -80,10 +116,8 @@ Code, etc.), también leé [`AGENTS.md`](./AGENTS.md).
 | Best Practices | 100 |
 | SEO | 100 |
 
-## Estado del proyecto
-
-🚧 En construcción — ver [`docs/roadmap.md`](./docs/roadmap.md) para el
-detalle de fases.
+> Para verificar los puntajes reales, correr `pnpm build && pnpm preview`
+> y analizar con Lighthouse en modo incógnito.
 
 ## Licencia
 
