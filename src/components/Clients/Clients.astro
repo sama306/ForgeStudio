@@ -32,7 +32,6 @@ const clients = [
   },
 ];
 ---
-
 <section class="overflow-hidden bg-bg px-10 py-16" aria-label="Logos de clientes">
   <div class="clients-track flex w-max">
     {[...clients, ...clients, ...clients, ...clients].map((client) => (
@@ -80,16 +79,12 @@ const clients = [
     ))}
   </div>
 </section>
+
 <style>
   .clients-track {
     animation: clients-scroll 40s linear infinite;
     will-change: transform;
   }
-
-  .clients-track:hover {
-    animation-play-state: paused;
-  }
-
   @keyframes clients-scroll {
     from {
       transform: translateX(0);
@@ -98,7 +93,6 @@ const clients = [
       transform: translateX(-25%);
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
     .clients-track {
       animation-duration: 120s;
