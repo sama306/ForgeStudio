@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#0B0B0B"/>
-  <rect x="60" y="60" width="1080" height="510" rx="16" fill="none" stroke="#FF6B00" stroke-width="2" opacity="0.3"/>
-  <text x="120" y="340" font-family="system-ui, sans-serif" font-size="96" font-weight="700" fill="#FFFFFF">
-    Forge<tspan fill="#FF6B00">Studio</tspan>
-  </text>
-  <text x="120" y="420" font-family="system-ui, sans-serif" font-size="32" fill="#A0A0A0">
+  <rect x="60" y="60" width="1080" height="510" rx="16" fill="none" stroke="#FF6B00" stroke-width="2" opacity="0.25"/>
+  <g transform="translate(120, 220)">
+    <path d="M40 1l7.5 26.5L74 35l-26.5 7.5L40 69l-7.5-26.5L6 35l26.5-7.5L40 1Z" fill="#FF6B00"/>
+    <text x="58" y="46" font-family="system-ui, sans-serif" font-size="96" font-weight="700" fill="#FFFFFF">
+      Forge<tspan fill="#FF6B00">Studio</tspan>
+    </text>
+  </g>
+  <text x="120" y="380" font-family="system-ui, sans-serif" font-size="32" fill="#A0A0A0">
     Experiencias digitales que convierten.
   </text>
 </svg>
