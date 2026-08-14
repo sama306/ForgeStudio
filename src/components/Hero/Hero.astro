@@ -63,27 +63,33 @@ export interface Props {
           </filter>
         </defs>
 
-        <g class="hero-pulse" transform="translate(200, 200)">
-          <circle r="90" fill="url(#core-glow)" />
-          <circle r="6" fill="#FF6B00" opacity="0.6" filter="url(#glow-filter)" />
-          <circle r="2" fill="#FF6B00" opacity="0.9" />
-        </g>
-
-        <g class="hero-rotate-slow" transform="translate(200, 200)">
-          <ellipse cx="0" cy="0" rx="160" ry="50" stroke="#FF6B00" stroke-width="0.5" opacity="0.12" />
-          <g class="hero-orbits" transform="rotate(0)">
-            <circle cx="160" cy="0" r="2.5" fill="#FF6B00" opacity="0.35" />
-            <circle cx="-160" cy="0" r="2" fill="#FF6B00" opacity="0.2" />
-            <circle cx="0" cy="50" r="2" fill="#FF6B00" opacity="0.15" />
-            <circle cx="0" cy="-50" r="2.5" fill="#FF6B00" opacity="0.3" />
+        <g transform="translate(200, 200)">
+          <g class="hero-pulse">
+            <circle r="90" fill="url(#core-glow)" />
+            <circle r="6" fill="#FF6B00" opacity="0.6" filter="url(#glow-filter)" />
+            <circle r="2" fill="#FF6B00" opacity="0.9" />
           </g>
         </g>
 
-        <g class="hero-rotate-reverse" transform="translate(200, 200)">
-          <ellipse cx="0" cy="0" rx="105" ry="35" stroke="#FF6B00" stroke-width="0.5" opacity="0.15" />
-          <g class="hero-orbits-reverse" transform="rotate(45)">
-            <circle cx="105" cy="0" r="2" fill="#FF6B00" opacity="0.25" />
-            <circle cx="-105" cy="0" r="2" fill="#FF6B00" opacity="0.25" />
+        <g transform="translate(200, 200)">
+          <g class="hero-rotate-slow">
+            <ellipse cx="0" cy="0" rx="160" ry="50" stroke="#FF6B00" stroke-width="0.5" opacity="0.12" />
+            <g class="hero-orbits" transform="rotate(0)">
+              <circle cx="160" cy="0" r="2.5" fill="#FF6B00" opacity="0.35" />
+              <circle cx="-160" cy="0" r="2" fill="#FF6B00" opacity="0.2" />
+              <circle cx="0" cy="50" r="2" fill="#FF6B00" opacity="0.15" />
+              <circle cx="0" cy="-50" r="2.5" fill="#FF6B00" opacity="0.3" />
+            </g>
+          </g>
+        </g>
+
+        <g transform="translate(200, 200)">
+          <g class="hero-rotate-reverse">
+            <ellipse cx="0" cy="0" rx="105" ry="35" stroke="#FF6B00" stroke-width="0.5" opacity="0.15" />
+            <g class="hero-orbits-reverse" transform="rotate(45)">
+              <circle cx="105" cy="0" r="2" fill="#FF6B00" opacity="0.25" />
+              <circle cx="-105" cy="0" r="2" fill="#FF6B00" opacity="0.25" />
+            </g>
           </g>
         </g>
       </svg>
@@ -178,16 +184,19 @@ if (!prefersReduced) {
   .hero-pulse {
     animation: hero-pulse 4s ease-in-out infinite;
     transform-origin: center;
+    transform-box: fill-box;
   }
 
   .hero-rotate-slow {
     animation: hero-spin 30s linear infinite;
     transform-origin: center;
+    transform-box: fill-box;
   }
 
   .hero-rotate-reverse {
     animation: hero-spin-reverse 20s linear infinite;
     transform-origin: center;
+    transform-box: fill-box;
   }
 
   @keyframes hero-pulse {
