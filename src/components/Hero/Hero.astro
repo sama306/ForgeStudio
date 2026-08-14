@@ -100,30 +100,21 @@ const visualEl = document.querySelector('.hero-visual-container');
 if (!prefersReduced) {
   const tl = gsap.timeline();
 
-  tl.from('.hero-title', {
-    opacity: 0,
-    filter: 'blur(20px)',
-    duration: 0.8,
-    ease: 'power3.out',
-  })
-    .from(
+  tl.fromTo(
+    '.hero-title',
+    { opacity: 0, filter: 'blur(20px)' },
+    { opacity: 1, filter: 'blur(0px)', duration: 0.8, ease: 'power3.out' },
+  )
+    .fromTo(
       '.hero-subtitle',
-      {
-        opacity: 0,
-        filter: 'blur(12px)',
-        duration: 0.6,
-        ease: 'power3.out',
-      },
+      { opacity: 0, filter: 'blur(12px)' },
+      { opacity: 1, filter: 'blur(0px)', duration: 0.6, ease: 'power3.out' },
       '-=0.35',
     )
-    .from(
+    .fromTo(
       '.hero-cta',
-      {
-        opacity: 0,
-        y: 20,
-        duration: 0.5,
-        ease: 'power2.out',
-      },
+      { opacity: 0, y: 20, filter: 'blur(20px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.5, ease: 'power2.out' },
       '-=0.3',
     );
 
